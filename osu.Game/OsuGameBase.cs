@@ -479,14 +479,16 @@ namespace osu.Game
             AddFont(Resources, @"Fonts/Torus-Alternate/Torus-Alternate-SemiBold");
             AddFont(Resources, @"Fonts/Torus-Alternate/Torus-Alternate-Bold");
 
-            AddFont(Resources, @"Fonts/Inter/Inter-Regular");
-            AddFont(Resources, @"Fonts/Inter/Inter-RegularItalic");
-            AddFont(Resources, @"Fonts/Inter/Inter-Light");
-            AddFont(Resources, @"Fonts/Inter/Inter-LightItalic");
-            AddFont(Resources, @"Fonts/Inter/Inter-SemiBold");
-            AddFont(Resources, @"Fonts/Inter/Inter-SemiBoldItalic");
-            AddFont(Resources, @"Fonts/Inter/Inter-Bold");
-            AddFont(Resources, @"Fonts/Inter/Inter-BoldItalic");
+            AddFont(Resources, @"Fonts/Comfortaa/Comfortaa-Regular");
+            AddFont(Resources, @"Fonts/Comfortaa/Comfortaa-RegularItalic");
+            AddFont(Resources, @"Fonts/Comfortaa/Comfortaa-Light");
+            AddFont(Resources, @"Fonts/Comfortaa/Comfortaa-LightItalic");
+            AddFont(Resources, @"Fonts/Comfortaa/Comfortaa-Medium");
+            AddFont(Resources, @"Fonts/Comfortaa/Comfortaa-MediumItalic");
+            AddFont(Resources, @"Fonts/Comfortaa/Comfortaa-SemiBold");
+            AddFont(Resources, @"Fonts/Comfortaa/Comfortaa-SemiBoldItalic");
+            AddFont(Resources, @"Fonts/Comfortaa/Comfortaa-Bold");
+            AddFont(Resources, @"Fonts/Comfortaa/Comfortaa-BoldItalic");
 
             AddFont(Resources, @"Fonts/Noto/Noto-Basic");
             AddFont(Resources, @"Fonts/Noto/Noto-Hangul");
