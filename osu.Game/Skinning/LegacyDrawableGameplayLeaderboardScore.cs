@@ -306,7 +306,7 @@ namespace osu.Game.Skinning
             positionText.Text = ScorePosition.Value.HasValue ? $"{ScorePosition.Value.Value.FormatRank()}" : "-";
 
             Color4 usernameColour = Color4.White;
-            bool widthExtension = false;
+            //Width extension has been removed due to never being used in this panel
 
             if (HasQuit.Value)
             {
@@ -315,12 +315,10 @@ namespace osu.Game.Skinning
             }
             else if (ScorePosition.Value == 1)
             {
-                widthExtension = true;
                 setPanelColour(BackgroundColour ?? colours.Lime2);
             }
             else if (Tracked)
             {
-                widthExtension = true;
                 setPanelColourAsTracked();
             }
             else if (isFriend)
@@ -332,8 +330,6 @@ namespace osu.Game.Skinning
                 setPanelColour(BackgroundColour ?? colours.Blue4);
 
             usernameText.FadeColour(usernameColour, text_transition_duration, Easing.OutQuint);
-
-            scorePanel.MoveToX(widthExtension ? 0 : left_panel_extension_width, panel_transition_duration, Easing.OutElastic);
         }
 
         private void setPanelColour(Color4 baseColour)
