@@ -80,6 +80,7 @@ namespace osu.Game.Skinning
         private Container rightLayer = null!;
         private Box rightLayerGradient = null!;
         private Container positionComponent = null!;
+        private Container avatarComponent = null!;
         private Container scoreComponents = null!;
         private OsuSpriteText usernameText = null!;
         private OsuSpriteText positionText = null!;
@@ -128,8 +129,6 @@ namespace osu.Game.Skinning
         [BackgroundDependencyLoader]
         private void load()
         {
-            Container avatarLayer;
-
             InternalChild = scorePanel = new FillFlowContainer
             {
                 BorderThickness = 2f,
@@ -148,35 +147,31 @@ namespace osu.Game.Skinning
 
                     // this is placed here between the left and right layer for layout purposes,
                     // but it's proxied below to render in front of them.
-                    avatarLayer = new Container
-                    {
-                        Size = new Vector2(avatar_size),
-                        // precise padding so the avatar's top and bottom sides land as close to the panel borders as possible.
-                        Padding = new MarginPadding(1.3f),
-                        // negative left margin to place the avatar's center directly at the edge of the left layer.
-                        Margin = new MarginPadding { Left = -avatar_size / 2 },
-                        Child = new Container
-                        {
-                            RelativeSizeAxes = Axes.Both,
-                            Masking = true,
-                            Child = new ScoreAvatar(User)
-                            {
-                                Anchor = Anchor.Centre,
-                                Origin = Anchor.Centre,
-                                RelativeSizeAxes = Axes.Both,
-                            },
-                        },
-                    },
+
                     rightLayer = new Container
                     {
                         RelativeSizeAxes = Axes.Y,
-                        // negative left margin to make the X position of the right layer directly at the avatar center (rendered behind it).
-                        Margin = new MarginPadding { Left = -avatar_size / 2 },
                         Children = new Drawable[]
                         {
                             rightLayerGradient = new Box
                             {
                                 RelativeSizeAxes = Axes.Both,
+                            },
+                            //Avatar component has been moved inside the right layer, due to having noo need to be a separator between position and score
+                            avatarComponent = new Container
+                            {
+                                Size = new Vector2(avatar_size),
+                                Child = new Container
+                                {
+                                    RelativeSizeAxes = Axes.Both,
+                                    Masking = true,
+                                    Child = new ScoreAvatar(User)
+                                    {
+                                        Anchor = Anchor.Centre,
+                                        Origin = Anchor.Centre,
+                                        RelativeSizeAxes = Axes.Both,
+                                    },
+                                },
                             },
                             positionComponent = new Container
                             {
@@ -196,7 +191,7 @@ namespace osu.Game.Skinning
                             scoreComponents = new Container
                             {
                                 RelativeSizeAxes = Axes.Both,
-                                Padding = new MarginPadding { Left = avatar_size / 2 + 4, Right = 20, Vertical = 5 },
+                                Padding = new MarginPadding { Left = avatar_size + 4, Right = 20, Vertical = 5 },
                                 Children = new Drawable[]
                                 {
                                     new GridContainer
@@ -266,7 +261,6 @@ namespace osu.Game.Skinning
                             }
                         }
                     },
-                    avatarLayer.CreateProxy(),
                 }
             };
         }
