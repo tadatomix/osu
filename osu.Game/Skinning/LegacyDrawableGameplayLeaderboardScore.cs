@@ -224,13 +224,7 @@ namespace osu.Game.Skinning
                                                     Text = User?.Username ?? string.Empty,
                                                     Font = OsuFont.Style.Caption1,
                                                     RelativeSizeAxes = Axes.X,
-                                                },
-                                                accuracyText = new OsuSpriteText
-                                                {
-                                                    Anchor = Anchor.BottomLeft,
-                                                    Origin = Anchor.BottomLeft,
-                                                    Font = OsuFont.Style.Caption2,
-                                                },
+                                                }
                                             }
                                         },
                                     },
@@ -287,8 +281,6 @@ namespace osu.Game.Skinning
             scoreDisplayMode = config.GetBindable<ScoringMode>(OsuSetting.ScoreDisplayMode);
             scoreDisplayMode.BindValueChanged(_ => updateScore());
             TotalScore.BindValueChanged(_ => updateScore(), true);
-
-            Accuracy.BindValueChanged(v => accuracyText.Text = v.NewValue.FormatAccuracy(), true);
 
             Combo.BindValueChanged(v => comboText.Text = $@"{v.NewValue}x", true);
 
@@ -380,7 +372,6 @@ namespace osu.Game.Skinning
 
             bool showAccuracyAndCombo = rightLayer.Width >= accuracy_combo_width_cutoff;
 
-            accuracyText.Alpha = showAccuracyAndCombo ? 1 : 0;
             comboText.Alpha = showAccuracyAndCombo ? 1 : 0;
 
             bool showUsernameAndScore = rightLayer.Width >= username_score_width_cutoff;
