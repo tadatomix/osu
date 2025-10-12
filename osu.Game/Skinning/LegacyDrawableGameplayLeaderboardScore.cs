@@ -303,7 +303,7 @@ namespace osu.Game.Skinning
 
         private void updatePanelState()
         {
-            positionText.Text = ScorePosition.Value.HasValue ? $"#{ScorePosition.Value.Value.FormatRank()}" : "-";
+            positionText.Text = ScorePosition.Value.HasValue ? $"{ScorePosition.Value.Value.FormatRank()}" : "-";
 
             Color4 usernameColour = Color4.White;
             bool widthExtension = false;
