@@ -39,7 +39,8 @@ namespace osu.Game.Skinning
 
         private const float avatar_size = PANEL_HEIGHT;
 
-        public const float PANEL_HEIGHT = 38f;
+        // Height was taken from https://osu.ppy.sh/wiki/en/Skinning/Interface#song-selection
+        public const float PANEL_HEIGHT = 85f;
 
         /// <summary>
         /// Extra width lenience to account for the out-of-range values produced by elastic easing when the score panel becomes extended (due to earning first score position or is a tracked score).
