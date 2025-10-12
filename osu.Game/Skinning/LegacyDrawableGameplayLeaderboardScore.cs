@@ -41,8 +41,6 @@ namespace osu.Game.Skinning
 
         public const float PANEL_HEIGHT = 38f;
 
-        public static readonly float SHEAR_WIDTH = PANEL_HEIGHT * OsuGame.SHEAR.X;
-
         /// <summary>
         /// Extra width lenience to account for the out-of-range values produced by elastic easing when the score panel becomes extended (due to earning first score position or is a tracked score).
         /// </summary>
@@ -104,7 +102,7 @@ namespace osu.Game.Skinning
         private readonly LayoutValue drawSizeLayout = new LayoutValue(Invalidation.DrawSize);
 
         /// <summary>
-        /// Creates a new <see cref="DrawableGameplayLeaderboardScore"/>.
+        /// Creates a new <see cref="LegacyDrawableGameplayLeaderboardScore"/>.
         /// </summary>
         public LegacyDrawableGameplayLeaderboardScore(GameplayLeaderboardScore score)
         {
@@ -123,8 +121,6 @@ namespace osu.Game.Skinning
 
             RelativeSizeAxes = Axes.X;
             Height = PANEL_HEIGHT;
-
-            Shear = OsuGame.SHEAR;
 
             AddLayout(drawSizeLayout);
         }
@@ -166,14 +162,13 @@ namespace osu.Game.Skinning
                                 Origin = Anchor.TopRight,
                                 Width = regular_left_panel_width,
                                 // This may not be mathematically accurate but the position text looks best aligned with it.
-                                Padding = new MarginPadding { Right = avatar_size / 2 - SHEAR_WIDTH / 2 },
+                                Padding = new MarginPadding { Right = avatar_size / 2 / 2 },
                                 RelativeSizeAxes = Axes.Y,
                                 Child = positionText = new OsuSpriteText
                                 {
                                     Anchor = Anchor.Centre,
                                     Origin = Anchor.Centre,
                                     Font = OsuFont.Style.Caption1.With(weight: FontWeight.SemiBold),
-                                    Shear = -OsuGame.SHEAR,
                                 }
                             }
                         },
@@ -197,9 +192,6 @@ namespace osu.Game.Skinning
                                 Anchor = Anchor.Centre,
                                 Origin = Anchor.Centre,
                                 RelativeSizeAxes = Axes.Both,
-                                Shear = -OsuGame.SHEAR,
-                                // extra scaling to cover the entire sheared area.
-                                Scale = new Vector2(1.1f),
                             },
                         },
                     },
@@ -218,7 +210,6 @@ namespace osu.Game.Skinning
                             {
                                 RelativeSizeAxes = Axes.Both,
                                 Padding = new MarginPadding { Left = avatar_size / 2 + 4, Right = 20, Vertical = 5 },
-                                Shear = -OsuGame.SHEAR,
                                 Children = new Drawable[]
                                 {
                                     new GridContainer

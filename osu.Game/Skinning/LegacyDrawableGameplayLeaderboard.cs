@@ -21,6 +21,9 @@ namespace osu.Game.Skinning
 {
     public partial class LegacyDrawableGameplayLeaderboard : CompositeDrawable, ISerialisableDrawable
     {
+        // Extra lenience is applied so the scores don't get cut off from the left due to elastic easing transforms.
+        private const float x_offset = LegacyDrawableGameplayLeaderboardScore.ELASTIC_WIDTH_LENIENCE;
+
         protected readonly FillFlowContainer<LegacyDrawableGameplayLeaderboardScore> Flow;
 
         private bool requiresScroll;
@@ -51,10 +54,7 @@ namespace osu.Game.Skinning
         /// </summary>
         public LegacyDrawableGameplayLeaderboard()
         {
-            // Extra lenience is applied so the scores don't get cut off from the left due to elastic easing transforms.
-            float xOffset = LegacyDrawableGameplayLeaderboardScore.SHEAR_WIDTH + LegacyDrawableGameplayLeaderboardScore.ELASTIC_WIDTH_LENIENCE;
-
-            Width = 260 + xOffset;
+            Width = 260 + x_offset;
             Height = 495;
 
             InternalChildren = new Drawable[]
@@ -67,7 +67,7 @@ namespace osu.Game.Skinning
                     {
                         Alpha = 0f,
                         RelativeSizeAxes = Axes.X,
-                        X = xOffset,
+                        X = x_offset,
                         AutoSizeAxes = Axes.Y,
                         Direction = FillDirection.Vertical,
                         Spacing = new Vector2(2.5f),
