@@ -296,30 +296,32 @@ namespace osu.Game.Skinning
             positionText.Text = ScorePosition.Value.HasValue ? $"{ScorePosition.Value.Value.FormatRank()}" : "-";
 
             Color4 usernameColour = Color4.White;
+            Color4 comboColour = new Color4(153, 250, 255, 255);
             //Width extension has been removed due to never being used in this panel
 
             if (HasQuit.Value)
             {
                 setPanelColour(Color4.Gray);
-                usernameColour = colours.Red2;
+                usernameColour = new Color4(236, 39, 81, 255);
             }
             else if (ScorePosition.Value == 1)
             {
-                setPanelColour(BackgroundColour ?? colours.Lime2);
+                setPanelColour(BackgroundColour ?? new Color4(97, 190, 255, 150));
             }
             else if (Tracked)
             {
                 setPanelColourAsTracked();
+                setPanelColour(BackgroundColour ?? new Color4(250, 250, 250, 100));
             }
             else if (isFriend)
             {
-                setPanelColour(BackgroundColour ?? colours.Pink1);
-                usernameColour = colours.Pink1;
+                setPanelColour(BackgroundColour ?? new Color4(255, 97, 175, 180));
             }
             else
-                setPanelColour(BackgroundColour ?? colours.Blue4);
+                setPanelColour(BackgroundColour ?? new Color4(31, 115, 153, 150));
 
             usernameText.FadeColour(usernameColour, text_transition_duration, Easing.OutQuint);
+            comboText.FadeColour(comboColour);
         }
 
         private void setPanelColour(Color4 baseColour)
