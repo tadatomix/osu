@@ -128,13 +128,10 @@ namespace osu.Game.Skinning
         [BackgroundDependencyLoader]
         private void load()
         {
-            const float corner_radius = 10;
-
             Container avatarLayer;
 
             InternalChild = scorePanel = new FillFlowContainer
             {
-                CornerRadius = corner_radius,
                 BorderThickness = 2f,
                 Masking = true,
                 AutoSizeAxes = Axes.X,
@@ -161,7 +158,6 @@ namespace osu.Game.Skinning
                         Child = new Container
                         {
                             RelativeSizeAxes = Axes.Both,
-                            CornerRadius = corner_radius,
                             Masking = true,
                             Child = new ScoreAvatar(User)
                             {
