@@ -221,14 +221,14 @@ namespace osu.Game.Skinning
                                                     Anchor = Anchor.BottomLeft,
                                                     Origin = Anchor.BottomLeft,
                                                     Text = User?.Username ?? string.Empty,
-                                                    Font = OsuFont.Style.Caption1.With(weight: FontWeight.SemiBold),
+                                                    Font = OsuFont.Style.Caption1,
                                                     RelativeSizeAxes = Axes.X,
                                                 },
                                                 accuracyText = new OsuSpriteText
                                                 {
                                                     Anchor = Anchor.BottomLeft,
                                                     Origin = Anchor.BottomLeft,
-                                                    Font = OsuFont.Style.Caption2.With(weight: FontWeight.SemiBold),
+                                                    Font = OsuFont.Style.Caption2,
                                                 },
                                             }
                                         },
@@ -256,14 +256,14 @@ namespace osu.Game.Skinning
                                                 {
                                                     Anchor = Anchor.BottomLeft,
                                                     Origin = Anchor.BottomLeft,
-                                                    Font = OsuFont.Style.Body.With(weight: FontWeight.Regular),
+                                                    Font = OsuFont.Style.Body,
                                                     RelativeSizeAxes = Axes.X,
                                                 },
                                                 comboText = new OsuSpriteText
                                                 {
                                                     Anchor = Anchor.BottomRight,
                                                     Origin = Anchor.BottomRight,
-                                                    Font = OsuFont.Style.Caption2.With(weight: FontWeight.SemiBold),
+                                                    Font = OsuFont.Style.Caption2,
                                                 },
                                             }
                                         },
