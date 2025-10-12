@@ -83,7 +83,6 @@ namespace osu.Game.Skinning
         private Container scoreComponents = null!;
         private OsuSpriteText usernameText = null!;
         private OsuSpriteText positionText = null!;
-        private OsuSpriteText accuracyText = null!;
         private OsuSpriteText scoreText = null!;
         private OsuSpriteText comboText = null!;
 
