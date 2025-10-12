@@ -137,17 +137,7 @@ namespace osu.Game.Skinning
                 RelativeSizeAxes = Axes.Y,
                 Children = new[]
                 {
-                    // Apparently this whole dual layer thing is here because the design apparently called
-                    // for a different colour to the left opposed to the right.
-                    //
-                    // I don't know this makes much visual sense. If it ever becomes an issue, rip it out
-                    // and replace with a single gradient instead.
-
                     // The left layer was removed due to being unused in LegacyLeaderboard
-
-                    // this is placed here between the left and right layer for layout purposes,
-                    // but it's proxied below to render in front of them.
-
                     rightLayer = new Container
                     {
                         RelativeSizeAxes = Axes.Y,
