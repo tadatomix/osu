@@ -76,10 +76,9 @@ namespace osu.Game.Skinning
         public readonly bool Tracked;
 
         private FillFlowContainer scorePanel = null!;
-        private Container leftLayer = null!;
-        private Box leftLayerGradient = null!;
         private Container rightLayer = null!;
         private Box rightLayerGradient = null!;
+        private Container positionComponent = null!;
         private Container scoreComponents = null!;
         private OsuSpriteText usernameText = null!;
         private OsuSpriteText positionText = null!;
@@ -147,33 +146,9 @@ namespace osu.Game.Skinning
                     //
                     // I don't know this makes much visual sense. If it ever becomes an issue, rip it out
                     // and replace with a single gradient instead.
-                    leftLayer = new Container
-                    {
-                        Width = regular_left_panel_width,
-                        RelativeSizeAxes = Axes.Y,
-                        Children = new Drawable[]
-                        {
-                            leftLayerGradient = new Box
-                            {
-                                RelativeSizeAxes = Axes.Both,
-                            },
-                            new Container
-                            {
-                                Anchor = Anchor.TopRight,
-                                Origin = Anchor.TopRight,
-                                Width = regular_left_panel_width,
-                                // This may not be mathematically accurate but the position text looks best aligned with it.
-                                Padding = new MarginPadding { Right = avatar_size / 2 / 2 },
-                                RelativeSizeAxes = Axes.Y,
-                                Child = positionText = new OsuSpriteText
-                                {
-                                    Anchor = Anchor.Centre,
-                                    Origin = Anchor.Centre,
-                                    Font = OsuFont.Style.Caption1.With(weight: FontWeight.SemiBold),
-                                }
-                            }
-                        },
-                    },
+
+                    // The left layer was removed due to being unused in LegacyLeaderboard
+
                     // this is placed here between the left and right layer for layout purposes,
                     // but it's proxied below to render in front of them.
                     avatarLayer = new Container
@@ -206,6 +181,21 @@ namespace osu.Game.Skinning
                             rightLayerGradient = new Box
                             {
                                 RelativeSizeAxes = Axes.Both,
+                            },
+                            positionComponent = new Container
+                            {
+                                Anchor = Anchor.TopRight,
+                                Origin = Anchor.TopRight,
+                                Width = regular_left_panel_width,
+                                // This may not be mathematically accurate but the position text looks best aligned with it.
+                                Padding = new MarginPadding { Right = avatar_size / 2 / 2 },
+                                RelativeSizeAxes = Axes.Y,
+                                Child = positionText = new OsuSpriteText
+                                {
+                                    Anchor = Anchor.Centre,
+                                    Origin = Anchor.Centre,
+                                    Font = OsuFont.Style.Caption1.With(weight: FontWeight.SemiBold),
+                                }
                             },
                             scoreComponents = new Container
                             {
@@ -362,19 +352,16 @@ namespace osu.Game.Skinning
             usernameText.FadeColour(usernameColour, text_transition_duration, Easing.OutQuint);
 
             scorePanel.MoveToX(widthExtension ? 0 : left_panel_extension_width, panel_transition_duration, Easing.OutElastic);
-            leftLayer.ResizeWidthTo(widthExtension ? extended_left_panel_width : regular_left_panel_width, panel_transition_duration, Easing.OutElastic);
         }
 
         private void setPanelColour(Color4 baseColour)
         {
-            leftLayerGradient.Colour = ColourInfo.GradientVertical(baseColour.Opacity(0.2f), baseColour.Opacity(0.5f));
             rightLayerGradient.Colour = ColourInfo.GradientVertical(baseColour.Opacity(0.1f), baseColour.Opacity(0.3f));
             scorePanel.BorderColour = ColourInfo.GradientVertical(baseColour.Opacity(0.2f), baseColour);
         }
 
         private void setPanelColourAsTracked()
         {
-            leftLayerGradient.Colour = ColourInfo.GradientVertical(colours.Blue2.Opacity(0.3f), colours.Blue2);
             rightLayerGradient.Colour = ColourInfo.GradientVertical(colours.Blue4.Opacity(0.25f), colours.Blue3.Opacity(0.6f));
             scorePanel.BorderColour = ColourInfo.GradientVertical(colours.Blue1.Opacity(0.2f), colours.Blue1);
         }
