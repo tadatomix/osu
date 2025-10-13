@@ -175,7 +175,9 @@ namespace osu.Game.Skinning
                                 {
                                     Anchor = Anchor.Centre,
                                     Origin = Anchor.Centre,
-                                    Font = OsuFont.Style.Caption1.With(weight: FontWeight.SemiBold),
+                                    Font = OsuFont.Style.Caption1.With(size: 20),
+                                    // Opacity was taken approximately. I'm not even sure is that a correct value, but it looks fine
+                                    Colour = new Color4(255, 255, 255, 40),
                                 }
                             },
                             scoreComponents = new Container
@@ -235,14 +237,14 @@ namespace osu.Game.Skinning
                                                 {
                                                     Anchor = Anchor.BottomLeft,
                                                     Origin = Anchor.BottomLeft,
-                                                    Font = OsuFont.Style.Body,
+                                                    Font = OsuFont.Style.Caption2.With(size: 10),
                                                     RelativeSizeAxes = Axes.X,
                                                 },
                                                 comboText = new OsuSpriteText
                                                 {
                                                     Anchor = Anchor.BottomRight,
                                                     Origin = Anchor.BottomRight,
-                                                    Font = OsuFont.Style.Caption2,
+                                                    Font = OsuFont.Style.Caption2.With(size: 10),
                                                 },
                                             }
                                         },
