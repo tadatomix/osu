@@ -92,6 +92,8 @@ namespace osu.Game.Beatmaps
 
         int GridSize { get; internal set; }
 
+        PositionSnapGridType GridType { get; internal set; }
+
         double TimelineZoom { get; internal set; }
 
         CountdownType Countdown { get; internal set; }
