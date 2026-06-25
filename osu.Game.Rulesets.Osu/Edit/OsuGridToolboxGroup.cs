@@ -321,11 +321,4 @@ namespace osu.Game.Rulesets.Osu.Edit
             }
         }
     }
-
-    public enum PositionSnapGridType
-    {
-        Square,
-        Triangle,
-        Circle,
-    }
 }
