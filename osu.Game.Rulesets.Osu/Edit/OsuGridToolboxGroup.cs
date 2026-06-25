@@ -191,7 +191,7 @@ namespace osu.Game.Rulesets.Osu.Edit
         {
             base.LoadComplete();
 
-            gridTypeButtons.Items.First().Select();
+            gridTypeButtons.Items.ElementAtOrDefault((int)editorBeatmap.GridType)?.Select();
 
             StartPositionX.BindValueChanged(x =>
             {
