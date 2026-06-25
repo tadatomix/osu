@@ -241,6 +241,8 @@ namespace osu.Game.Rulesets.Osu.Edit
 
                 gridTypeButtons.Items[(int)v.NewValue].Select();
 
+                editorBeatmap.GridType = v.NewValue;
+
                 switch (v.NewValue)
                 {
                     case PositionSnapGridType.Square:
